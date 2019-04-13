@@ -8,7 +8,7 @@ draft: false
 sudo pacman -S bluez blues-utils
 {{< /highlight >}}
 
-Check stuff is unblocked with 
+Check stuff is unblocked with
 {{< highlight bash >}}
 rfkill list
 {{< /highlight >}}
