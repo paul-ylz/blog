@@ -1,0 +1,4 @@
+baseURL = "http://paul-ylz.github.io/"
+languageCode = "en-us"
+title = "paul-ylz"
+theme = "ananke"
