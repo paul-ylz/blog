@@ -1,10 +1,10 @@
 ---
-title: "Squash & Merge"
+title: 'Squash & Merge'
 date: 2019-04-16T22:29:28+08:00
 draft: false
 ---
 
-At work we do TBD (Trunk Based Development), which means that we always push code to the master branch. Sometimes, pushing to master is not convenient because we are in the middle of figuring out a solution and some wild trial and error is the only way we can figure out how to move forward. We often want others in our team to be able to join forces with us and help to figure out the problem, and so the most convenient thing to do is to push the existing state of our code. However, when master branch is connected to a build pipeline, we find ourselves wanting to create an experimental branch to work on. Typically this branch is going to have several commits, with terrible commit messages which tell the story of our desperate attempts to fix a tricky task.
+At work we do TBD (Trunk Based Development), which means that we always push code to the master branch. Sometimes, pushing to master is not convenient because we are in the middle of figuring out a solution and some wild trial and error is the only way we can figure out how to move forward. We often want others in our team to be able to join forces with us and help to figure out the problem, and so the most convenient thing to do is to push the existing state of our code. However, when master branch is connected to a build pipeline, we need to create an experimental branch to work on. Typically this branch is going to have several commits, with terrible commit messages which tell the story of our desperate attempts to fix a tricky task.
 
 In this case, all is not lost and we can still maintain some level of dignity by squashing these commits into a single commit and then merging our experimental branch to master so that it looks like a single, tidy commit. Squash and merge is the strategy!
 
@@ -27,6 +27,7 @@ ed6944 (HEAD -> apple, origin/apple) running out of good commit messages
 ```
 
 We want to be checked out on the apple branch and do an interactive rebase with the SHA of the last good commit.
+
 ```bash
 % git checkout apple
 % git rebase -i 7add34f
@@ -90,11 +91,12 @@ squash aed6944 running out of good commit messages
 # Note that empty commits are commented out
 ```
 
-`:wq` to write and quit. 
+`:wq` to write and quit.
 
-Now git gives us a change to rewrite our commit messages. We'll condense our hasty messages into an official and officious commit message that exudes quality.
+Now git gives us a chance to rewrite our commit messages. We'll condense our hasty messages into an officious commit message that exudes quality.
 
 BEFORE:
+
 ```VimL
 # This is a combination of 4 commits.
 # This is the 1st commit message:
@@ -131,6 +133,7 @@ running out of good commit messages
 ```
 
 AFTER:
+
 ```VimL
 ABC-2 | Added sample lines to readme for example
 
@@ -166,3 +169,5 @@ Current branch master is up to date.
 
 % git merge apple
 ```
+
+If we do not want the typical "Merged to master" commit message that git provides, we can always amend it with `git commit --amend`.
